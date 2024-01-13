@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>I'm Mel!</title>
+    <link rel="icon" href="hutaoGhost.png" type="image/png">
+</head>
+<body style="background-image: url('background.png'); background-size: cover; background-position: center 0%; background-attachment: fixed; overflow: clip;">
+    <div id="myClickableDiv" style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; width: 200px; height: 50px; font-size: 24px; background-color: #d15b5b; text-align: center; line-height: 50px; cursor: pointer; user-select: none; color: white; border-radius: 25px;">I'm Mel!</div>
+    <div id="totalClickDiv" style="position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; font-size: 48px; text-align: center; color: white;">0</div>
+    <div id="clickCount" style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; font-size: 24px; text-align: center; color: white;">0</div>
+    <div id="imageDiv" style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; text-align: center; cursor: pointer;" onclick="window.open('https://twitter.com/intent/tweet?text=Crazy?%20I%20was%20crazy%20once.%20They%20locked%20me%20in%20a%20room.%20A%20rubber%20room.%20A%20rubber%20room%20with%20rats.%20And%20rats%20make%20me%20crazy.%20Crazy?%20I%20was%20crazy%20once.%20They%20locked%20me%20in%20a%20room.%20A%20rubber%20room.%20A%20rubber%20room%20with%20rats.%20And%20rats%20make%20me%20crazy.%20', '_blank')"><img src="hutaoGhost.png" alt="Boo" style="max-width: 20px; max-height: 20px;"></div>    <div id="melnyanieChannel" style="position: absolute; top: 65%; left: 44%; transform: translate(-50%, -50%); z-index: 9999; font-size: 24px; text-align: center; cursor: pointer; user-select: none; color: white;" onclick="window.location.href='https://www.twitch.tv/melnyanie'">melnyanie channel</div>
+    <div id="melnyanieTwitter" style="position: absolute; top: 65%; left: 56%; transform: translate(-50%, -50%); z-index: 9999; font-size: 24px; text-align: center; cursor: pointer; user-select: none; color: white;" onclick="window.location.href='https://twitter.com/melnyanie'">melnyanie twitter</div>
+    <script>
+        var count = localStorage.getItem('count') ? parseInt(localStorage.getItem('count')) : 0;
+        document.getElementById("clickCount").innerText = count;
+
+        var imageArray = ["yumeko1.png", "yumeko2.png", "yumeko3.png", "catdraw.png", "catdrawn.png", "output-onlinegiftools.gif", "Untitled8_20231217001837.png"];
+        var audioArray = ["immeltwo.mp3", "immelthree.mp3", "immelone.mp3", "immelfour.mp3"];
+
+        document.getElementById("myClickableDiv").onclick = async function() {
+            count++;
+            localStorage.setItem('count', count);
+            document.getElementById("clickCount").innerText = count;
+            
+            if(count >= 10000){
+                window.location.href = 'https://pointerpointer.com/';
+                return;
+            }
+
+            var img = document.createElement("img");
+            img.src = imageArray[Math.floor(Math.random() * imageArray.length)];
+            img.style.position = "absolute";
+            var imgWidth = Math.random() * (800 - 200) + 200;
+            var imgHeight = Math.random() * (800 - 200) + 200;
+            img.style.width = imgWidth + "px";
+            img.style.height = imgHeight + "px";
+            img.style.left = Math.min(Math.random() * (window.innerWidth - imgWidth), window.innerWidth - imgWidth) + "px";
+            img.style.top = Math.min(Math.random() * (window.innerHeight - imgHeight), window.innerHeight - imgHeight) + "px";
+            img.style.transform = "rotate(" + Math.random() * 360 + "deg)";
+            img.style.objectFit = "contain";
+            document.body.appendChild(img);
+
+            var audio = new Audio(audioArray[Math.floor(Math.random() * audioArray.length)]);
+            audio.play();
+
+            audio.onended = function() {
+                document.body.removeChild(img);
+            };
+            const response = await fetch('/.netlify/functions/clicks');
+            const data = await response.json();
+            document.getElementById("totalClickDiv").innerText = data.clicks;
+        };
+    </script>
+</body>
+</html>
