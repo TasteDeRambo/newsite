@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
 
   // If the document doesn't exist, create it
   if (!doesDocExist) {
-    await client.query(q.Create(q.Collection('ClickCountData'), { data: { slug: 'clickCount', clicks: 1 } }));
+    await client.query(q.Create(q.Collection('clickCountData'), { data: { slug: 'clickCount', clicks: 1 } }));
   }
 
   // Get the document
