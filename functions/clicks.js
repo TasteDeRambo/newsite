@@ -2,7 +2,14 @@ const faunadb = require('faunadb');
 
 exports.handler = async (event, context) => {
   const q = faunadb.query;
-  const client = new faunadb.Client({ secret: process.env.FAUNA_SECRET_KEY });
+  const client = new faunadb.Client({ secret: 'fnAFXlEltRAASacUr_LudawtkoweIlm11bbAiOfD' });
+ // Check if the index exists
+ const doesIndexExist = await client.query(q.Exists(q.Index('clicks_by_slug')));
+
+ // If the index doesn't exist, return an error
+ if (!doesIndexExist) {
+   return { statusCode: 500, body: 'Index does not exist' };
+ }
 
   // Check if the document exists
   const doesDocExist = await client.query(q.Exists(q.Match(q.Index('clicks_by_slug'), 'clickCount')));
