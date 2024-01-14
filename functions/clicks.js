@@ -2,7 +2,7 @@ const faunadb = require('faunadb');
 
 exports.handler = async (event, context) => {
   const q = faunadb.query;
-  const client = new faunadb.Client({ secret: 'fnAFXlEltRAASacUr_LudawtkoweIlm11bbAiOfD' });
+  const client = new faunadb.Client({ secret: process.env.FAUNA_SECRET_KEY });
  
   // Check if the document exists
   const doesDocExist = await client.query(q.Exists(q.Match(q.Index('clicks_by_slug'), 'clickCount')));

@@ -22,8 +22,19 @@
             localStorage.setItem('count', count);
             document.getElementById("clickCount").innerText = count;
             
-            if(count >= 10000){
-                window.location.href = 'https://pointerpointer.com/';
+            if(count % 500 === 0){
+                var audio = new Audio('RPReplay_Final1705197418.mp3');
+                audio.play();
+
+                var img = document.createElement("img");
+                img.src = 'mcrib.png';
+                img.style.position = "absolute";
+                img.style.objectFit = "contain";
+                document.body.appendChild(img);
+
+                audio.onended = function() {
+                    document.body.removeChild(img);
+                };
                 return;
             }
 
