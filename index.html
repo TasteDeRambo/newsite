@@ -17,6 +17,12 @@
         </div>
     </div>
     <script>
+        window.onload = async function() {
+            const response = await fetch('/.netlify/functions/clicks');
+            const data = await response.json();
+            document.getElementById("totalClickDiv").innerText = data.clicks;
+        };
+
         var count = localStorage.getItem('count') ? parseInt(localStorage.getItem('count')) : 0;
         document.getElementById("clickCount").innerText = count;
 
