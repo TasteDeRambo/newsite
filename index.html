@@ -2,20 +2,20 @@
 <html>
 <head>
     <title>I'm Mel!</title>
-    <link rel="icon" href="hutaoGhost.png" type="image/png">
+    <link rel="icon" href="images\hutaoGhost.png" type="image/png">
 </head>
-<body style="background-image: url('background.png'); background-size: cover; background-position: center 0%; background-attachment: fixed; overflow: clip;">
+<body style="background-image: url('images\background.png'); background-size: cover; background-position: center 0%; background-attachment: fixed; overflow: clip;">
     <div id="myClickableDiv" style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; width: 200px; height: 50px; font-size: 24px; background-color: #d15b5b; text-align: center; line-height: 50px; cursor: pointer; user-select: none; color: white; border-radius: 25px;">I'm Mel!</div>
     <div id="totalClickDiv" style="position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; font-size: 48px; text-align: center; color: white;">0</div>
     <div id="clickCount" style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; font-size: 24px; text-align: center; color: white;">0</div>
-    <div id="imageDiv" style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; text-align: center; cursor: pointer;" onclick="window.open('https://twitter.com/intent/tweet?text=Crazy?%20I%20was%20crazy%20once.%20They%20locked%20me%20in%20a%20room.%20A%20rubber%20room.%20A%20rubber%20room%20with%20rats.%20And%20rats%20make%20me%20crazy.%20Crazy?%20I%20was%20crazy%20once.%20They%20locked%20me%20in%20a%20room.%20A%20rubber%20room.%20A%20rubber%20room%20with%20rats.%20And%20rats%20make%20me%20crazy.%20', '_blank')"><img src="hutaoGhost.png" alt="Boo" style="max-width: 20px; max-height: 20px;"></div>    <div id="melnyanieChannel" style="position: absolute; top: 65%; left: 44%; transform: translate(-50%, -50%); z-index: 9999; font-size: 24px; text-align: center; cursor: pointer; user-select: none; color: white;" onclick="window.location.href='https://www.twitch.tv/melnyanie'">melnyanie channel</div>
+    <div id="imageDiv" style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; text-align: center; cursor: pointer;" onclick="window.open('https://twitter.com/intent/tweet?text=Crazy?%20I%20was%20crazy%20once.%20They%20locked%20me%20in%20a%20room.%20A%20rubber%20room.%20A%20rubber%20room%20with%20rats.%20And%20rats%20make%20me%20crazy.%20Crazy?%20I%20was%20crazy%20once.%20They%20locked%20me%20in%20a%20room.%20A%20rubber%20room.%20A%20rubber%20room%20with%20rats.%20And%20rats%20make%20me%20crazy.%20', '_blank')"><img src="images\hutaoGhost.png" alt="Boo" style="max-width: 20px; max-height: 20px;"></div>    <div id="melnyanieChannel" style="position: absolute; top: 65%; left: 44%; transform: translate(-50%, -50%); z-index: 9999; font-size: 24px; text-align: center; cursor: pointer; user-select: none; color: white;" onclick="window.location.href='https://www.twitch.tv/melnyanie'">melnyanie channel</div>
     <div id="melnyanieTwitter" style="position: absolute; top: 65%; left: 56%; transform: translate(-50%, -50%); z-index: 9999; font-size: 24px; text-align: center; cursor: pointer; user-select: none; color: white;" onclick="window.location.href='https://twitter.com/melnyanie'">melnyanie twitter</div>
     <script>
         var count = localStorage.getItem('count') ? parseInt(localStorage.getItem('count')) : 0;
         document.getElementById("clickCount").innerText = count;
 
-        var imageArray = ["yumeko1.png", "yumeko2.png", "yumeko3.png", "catdraw.png", "catdrawn.png", "output-onlinegiftools.gif", "Untitled8_20231217001837.png"];
-        var audioArray = ["immeltwo.mp3", "immelthree.mp3", "immelone.mp3", "immelfour.mp3"];
+        var imageArray = ["images\yumeko1.png", "images\yumeko2.png", "images\yumeko3.png", "images\catdraw.png", "images\output-onlinegiftools.gif", "images\Untitled8_20231217001837.png"];
+        var audioArray = ["audios\immelone.mp3", "audios\immeltwo.mp3", "audios\immelthree.mp3", "audios\immelfour.mp3"];
 
         document.getElementById("myClickableDiv").onclick = async function() {
             count++;
@@ -23,11 +23,11 @@
             document.getElementById("clickCount").innerText = count;
             
             if(count % 500 === 0){
-                var audio = new Audio('RPReplay_Final1705197418.mp3');
+                var audio = new Audio('audios\RPReplay_Final1705197418.mp3');
                 audio.play();
 
                 var img = document.createElement("img");
-                img.src = 'mcrib.png';
+                img.src = 'images\mcrib.png';
                 img.style.position = "absolute";
                 img.style.objectFit = "contain";
                 document.body.appendChild(img);
