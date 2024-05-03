@@ -20,6 +20,18 @@
         </div>
     </div>
     <script>
+        var originalTitle = document.title;
+        var newTitle = "Pls come back";
+
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                // User is not in this tab
+                document.title = newTitle;
+            } else {
+                // User returned to this tab
+                document.title = originalTitle;
+            }
+        });
         window.onload = async function() {
             const response = await fetch('/.netlify/functions/clicks');
             const data = await response.json();
